@@ -10,14 +10,22 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:agentricai.startChat"
+    "onStartupFinished"
   ],
   "main": "./out/extension.js",
   "contributes": {
-    "commands": [
+    "chatParticipants": [
       {
-        "command": "agentricai.startChat",
-        "title": "Start AgentricAI Chat"
+        "id": "agentricai.chat",
+        "name": "AgentricAI",
+        "description": "Conversational code assistant for the AgentricAI ecosystem",
+        "isSticky": true,
+        "commands": [
+          {
+            "name": "help",
+            "description": "Get help with AgentricAI commands"
+          }
+        ]
       }
     ]
   },
@@ -29,11 +37,15 @@
     "lint": "eslint src --ext ts",
     "test": "node ./out/test/runTest.js"
   },
+  "dependencies": {
+    "node-fetch": "^2.7.0"
+  },
   "devDependencies": {
     "@types/vscode": "^1.74.0",
     "@types/glob": "^8.1.0",
     "@types/mocha": "^10.0.1",
     "@types/node": "16.x",
+    "@types/node-fetch": "^2.6.11",
     "eslint": "^8.34.0",
     "glob": "^8.1.0",
     "mocha": "^10.2.0",
